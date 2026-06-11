@@ -1,0 +1,119 @@
+---
+layout: base.njk
+title: "Hiroaki Sasaki — Portfolio"
+description: "佐々木啓彰 / Hiroaki Sasaki — Graphic Designer, Art Director, SNS Marketing. 余白と素材で、ブランドの温度を伝える。"
+permalink: "/index.html"
+---
+{%- set works = collections.works -%}
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero shell" data-screen-label="Hero">
+    <div class="stagger">
+      <p class="eyebrow">Portfolio — 2nd Edition</p>
+      <h1>
+        <span class="line">余白と素材で、</span>
+        <span class="line">ブランドの<span class="hot">温度</span>を</span>
+        <span class="line">伝える。</span>
+      </h1>
+      <p class="trans">
+        Through silence and texture,<br>
+        I give brands a temperature.
+      </p>
+    </div>
+    <div class="credit">
+      Graphic Designer / Art Director / SNS Marketing<br>
+      <span class="sub">Hiroaki Sasaki — Osaka, Japan</span>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+    <div class="vrt" style="right: 10px; top: 120px;">Hiroaki Sasaki</div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section id="work" class="section-pad" data-screen-label="Work">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="redblock"></span>
+        <span class="display">Work<span class="dot">.</span></span>
+      </div>
+
+      <nav class="cat-list reveal" data-delay="60">
+        {%- for cat in categories %}
+        {%- set n = works | countIn(cat.slug) %}
+        <a href="/works/{{ cat.slug }}/">
+          <span class="idx">{{ cat.number }}</span>
+          <span class="name">{{ cat.name }}</span>
+          <span class="meta">{{ n }} work{{ "s" if n != 1 }} <span class="arrow">→</span></span>
+        </a>
+        {%- endfor %}
+      </nav>
+
+      <div style="margin-top: clamp(40px,5vw,72px);">
+        <a class="txt-link" href="/works/{{ categories[0].slug }}/"><span class="arrow">→</span> View All Works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section-pad" style="background:var(--bg-deep);" data-screen-label="About">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="redblock"></span>
+        <span class="display">About<span class="dot">.</span></span>
+      </div>
+
+      <div class="about-grid">
+        <div class="statement reveal">
+          <p class="jp">学ぶことへの意欲と、目的から逆算してデザインに落とし込む自走力が私の強みです。地域おこし協力隊、アパレルブランドの立ち上げ、現在のデザイン業務まで、教わる環境がない中で自ら情報収集・検証を重ねてきました。「誰に・何を・どう伝えるか」を常に意識し、数値と反応を基に改善を続けています。</p>
+          <p class="en">My strength is self-directed learning and the ability to reverse-engineer a goal into design. From regional revitalization to launching an apparel brand to my current practice — I have always built what I needed. I ask: who is this for, what are we saying, and how? Then I iterate until the numbers and the feeling align.</p>
+        </div>
+
+        <div class="profile reveal" data-delay="100">
+          <div class="media profile-photo" data-ratio="4-5"><img src="/images/profile-photo.jpg" alt="Hiroaki Sasaki"></div>
+          <dl>
+            <dt>Name</dt><dd>佐々木 啓彰<br><span class="en-name">Hiroaki Sasaki</span></dd>
+            <dt>Born</dt><dd>1994 — Kanagawa</dd>
+            <dt>Base</dt><dd>Osaka, Japan</dd>
+            <dt>Role</dt><dd>SNS Marketing Director<br>Graphic Designer</dd>
+          </dl>
+
+          <div class="skills">
+            <h4>Skills</h4>
+            <div class="tags">
+              <span>Illustrator</span><span>Photoshop</span><span>XD</span>
+              <span>HTML</span><span>CSS / SCSS</span><span>JavaScript</span>
+              <span>SNS Strategy</span><span>Analytics</span>
+              <span>Photography</span><span>Retouching</span><span>Video</span>
+              <span>kintone</span>
+            </div>
+          </div>
+
+          <div class="skills">
+            <h4>Interests</h4>
+            <div class="tags">
+              <span>カメラ</span><span>コーヒー</span><span>インテリア</span>
+              <span>植物</span><span>音楽</span><span>古着</span>
+              <span>アウトドア</span><span>旅</span><span>サッカー</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section-pad" data-screen-label="Contact">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="redblock"></span>
+        <span class="display">Contact<span class="dot">.</span></span>
+      </div>
+      <p class="contact-big reveal">Let's work<br>together<span class="dot">.</span></p>
+      <div class="contact-links reveal" data-delay="80">
+        <a href="mailto:hiroaki.sasaki7777@gmail.com"><span style="font-family: &quot;Noto Sans JP&quot;; letter-spacing: 2.1px">hiroaki.sasaki7777@gmail.com</span><span class="lbl">Email</span></a>
+        <a href="https://www.instagram.com/sulk_shop/" target="_blank" rel="noopener"><span style="font-family: &quot;Noto Sans JP&quot;; letter-spacing: 1.7px">@sulk_shop</span><span class="lbl">Instagram</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>

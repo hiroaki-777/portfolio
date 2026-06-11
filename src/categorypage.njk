@@ -1,0 +1,23 @@
+{% import "workcard.njk" as wc %}
+{%- set works = collections.works | worksIn(cat.slug) -%}
+<main>
+  <section class="section-pad" data-screen-label="{{ cat.name }}">
+    <div class="shell">
+      <a class="back-link" href="/#work"><span class="ar">←</span> Back to Work</a>
+
+      <div class="cat-hero">
+        <span class="redblock"></span>
+        <span class="display">{{ cat.name }}<span class="dot">.</span></span>
+        <p class="sub">{{ cat.number }} — {{ cat.descriptor }} — {{ works.length }} work{{ "s" if works.length != 1 }}</p>
+      </div>
+
+      {%- if cat.slug == "sns" %}
+      {% for w in works %}{{ wc.render(w, "0" + (loop.index | string) if loop.index < 10 else (loop.index | string)) }}{% endfor %}
+      {%- else %}
+      <div class="work-grid{% if works.length == 1 %} single{% endif %}">
+      {% for w in works %}{{ wc.render(w, "0" + (loop.index | string) if loop.index < 10 else (loop.index | string)) }}{% endfor %}
+      </div>
+      {%- endif %}
+    </div>
+  </section>
+</main>

@@ -1,0 +1,95 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# 画像のアップロード先（リポジトリ内）と、サイト上での参照パス
+media_folder: "src/images"
+public_folder: "/images"
+
+# 管理画面の表示言語
+locale: ja
+
+collections:
+  - name: "works"
+    label: "作品 (Works)"
+    label_singular: "作品"
+    folder: "src/works"
+    create: true
+    slug: "{{category}}-{{order}}-{{slug}}"
+    format: "yaml-frontmatter"
+    summary: "{{fields.order}}. [{{fields.category}}] {{fields.title}}"
+    sortable_fields: ["category", "order", "title"]
+    fields:
+      - label: "タイトル"
+        name: "title"
+        widget: "string"
+
+      - label: "カテゴリ"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Flyer（フライヤー）", value: "flyer" }
+          - { label: "Shop Card（ショップカード）", value: "shop-card" }
+          - { label: "Logo（ロゴ）", value: "logo" }
+          - { label: "Banner（バナー）", value: "banner" }
+          - { label: "SNS", value: "sns" }
+
+      - label: "表示順 (小さいほど先頭)"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        default: 1
+
+      - label: "レイアウト"
+        name: "kind"
+        widget: "select"
+        hint: "faces=表裏2枚／single=1枚／banner=縦積み複数枚／logo=ロゴ展開／sns=SNS用。フライヤーやショップカードを足すなら faces か single が基本です。"
+        options: ["faces", "single", "banner", "logo", "sns"]
+        default: "faces"
+
+      - label: "説明文"
+        name: "description"
+        widget: "text"
+
+      - label: "担当（複数可・Enterで追加）"
+        name: "roles"
+        widget: "list"
+        required: false
+        hint: "例：Concept, Photography, Design"
+
+      - label: "制作期間など（任意）"
+        name: "term"
+        widget: "string"
+        required: false
+        hint: "例：Production — 3 days。空欄でもOK。"
+
+      - label: "画像"
+        name: "images"
+        widget: "list"
+        hint: "facesレイアウトは1枚目=表/2枚目=裏。single/logo/snsは1枚だけでOK。"
+        fields:
+          - { label: "画像ファイル", name: "src", widget: "image" }
+          - { label: "キャプション（任意・表/裏など）", name: "caption", widget: "string", required: false }
+          - { label: "代替テキスト（任意）", name: "alt", widget: "string", required: false }
+
+      - label: "2枚を縦に並べる (faces専用・任意)"
+        name: "faces_stack"
+        widget: "boolean"
+        required: false
+        default: false
+
+      - label: "画像の縦横比 (single専用・任意)"
+        name: "ratio"
+        widget: "string"
+        required: false
+        hint: "例：1-1, 3-4, 4-5。空欄なら1-1。"
+
+      - label: "リンクURL (sns専用・任意)"
+        name: "link"
+        widget: "string"
+        required: false
+
+      - label: "リンクのボタン文言 (sns専用・任意)"
+        name: "link_label"
+        widget: "string"
+        required: false
