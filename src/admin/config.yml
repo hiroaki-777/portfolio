@@ -1,6 +1,7 @@
 backend:
-  name: git-gateway
+  name: github
   branch: main
+  repo: hiroaki-777/portfolio
 
 # 画像のアップロード先（リポジトリ内）と、サイト上での参照パス
 media_folder: "src/images"
